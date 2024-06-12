@@ -363,6 +363,7 @@ def plot_bs(name, bs_sim, SR, bs_T):
     """
     timeseries = np.linspace(0, bs_T, num=len(bs_sim), endpoint=False)
     pyplot.plot(timeseries, bs_sim)
+    pyplot.ylim(-1,1)
     fn = OUTPUT_PATH/f"{name}.png"
     pyplot.savefig(fn)
     pyplot.close()
@@ -509,10 +510,10 @@ def stitch_bs(bs_T, SR, parts=3,
 
 # %% Run
 
-# import sys
-# sys.stdout = open('output.txt','wt')
-# for i in range(50):
-#     silence_chance = RNG.random()
-#     stitch_bs(30, SR, parts=20, name = f"bs{i:04}",
-#               silence_chance=silence_chance,
-#               play=False, plot=True)
+import sys
+sys.stdout = open('output.txt','wt')
+for i in range(100):
+    silence_chance = RNG.random()
+    stitch_bs(15, SR, parts=10, name = f"bs{i:04}",
+              silence_chance=silence_chance,
+              play=False, plot=True)
